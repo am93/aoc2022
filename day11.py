@@ -24,12 +24,9 @@ def setup():
 
 def worry_lvl(item, oper):
     new_oper = oper.replace('old', str(item))
-    if new_oper in memoisation.keys():
-        return memoisation[new_oper]
-    else:
-        res = eval(new_oper)
-        memoisation[new_oper] = res
-    return res
+    if new_oper not in memoisation.keys():
+        memoisation[new_oper] = eval(new_oper)
+    return memoisation[new_oper]
 
 
 def solve(part1, lcm=0):
